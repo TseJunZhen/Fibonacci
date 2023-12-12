@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+  </style>
+  <title>Fibonacci Sequence</title>
+</head>
+<body>
+  <p>1,1,</p>
+  <script>
+    let currentAngle = 1;
+    let previousAngle = 1;
+    let tmp = previousAngle;
+    const iterations = 30;
+    const delay = 1000; // 1000 milliseconds = 1 second
+
+    const displayFibonacci = (i) => {
+      if (i <= iterations) {
+        tmp = currentAngle;
+        currentAngle = currentAngle + previousAngle;
+        previousAngle = tmp;
+
+        // Display the current Fibonacci number by appending to the <p> tag
+        const pElement = document.querySelector('p');
+        pElement.innerHTML += `${currentAngle}, `;
+
+        setTimeout(() => {
+          displayFibonacci(i + 1);
+        }, delay);
+      }
+    };
+
+    // Start displaying Fibonacci numbers
+    displayFibonacci(0);
+  </script>
+</body>
+</html>
